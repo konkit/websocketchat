@@ -12,9 +12,7 @@ websocketchat.controller(
       }
 
       dispatcher.bind('chat_listener', function(data) {
-        console.log('Received response : ' + data);
         $scope.chatData.push(data);
-        console.log($scope.chatData);
         $scope.$apply();
       });
     }
