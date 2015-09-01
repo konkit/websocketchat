@@ -26,8 +26,6 @@ websocketchat.controller(
 
       console.log('Setting bind');
       dispatcher.bind('chat_listener', function(data) {
-        console.log('Data arrived : ')
-        console.log(data)
         $scope.chatData.push(data);
         $scope.$apply();
       });
