@@ -1,1 +1,11 @@
-%h1 Main
+.container
+  %h1 Chat app
+  .form-group
+    .chat-text-area.form-control
+      %p{'ng-repeat': 'chatMessage in chatData'} {{chatMessage}}
+
+  .input-group
+    %label{'for': 'prompt'}
+    %input#prompt.form-control{'type': 'text', 'ng-model': 'message'}
+    %span.input-group-btn
+      %button.btn.btn-default{'type': 'button', 'ng-click': 'sendMessage()'} Send
