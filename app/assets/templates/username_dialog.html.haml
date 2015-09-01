@@ -1,0 +1,10 @@
+.modal-header
+  %h3 Please enter your username
+
+.modal-body
+  .form-group
+    %label{'for': 'usernameInput'} Username
+    %input.form-control#usernameInput{'ng-model': 'username'}
+
+.modal-footer
+  %button.btn.btn-primary.btn-block{:type => "button", "ng-click" => "submit($event)"} Submit
