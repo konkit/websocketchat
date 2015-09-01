@@ -5,10 +5,10 @@
 
       .form-group
         .chat-text-area.form-control
-          %p{'ng-repeat': 'chatMessage in chatData'} {{chatMessage}}
+          %p{'ng-repeat' => 'chatMessage in chatData'} {{chatMessage}}
 
       .input-group
         %span.input-group-addon {{username}}>
-        %input#prompt.form-control{'type': 'text', 'ng-model': 'message'}
+        %input#prompt.form-control{'type' => 'text', 'ng-model' => 'message'}
         %span.input-group-btn
-          %button.btn.btn-default{'type': 'button', 'ng-click': 'sendMessage()'} Send
+          %button.btn.btn-default{'type' => 'button', 'ng-click' => 'sendMessage()'} Send
