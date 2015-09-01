@@ -9,7 +9,7 @@ websocketchat.controller(
 
       $modal.open( {
         animation: true,
-        templateUrl: '/assets/username_dialog.html',
+        templateUrl: '/#/username_dialog.html',
         controller: 'UsernameDialogController',
         size: 'md',
       })
