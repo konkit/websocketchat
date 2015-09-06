@@ -24,6 +24,7 @@ websocketchat.controller(
       $scope.sendMessage = function() {
         var sentMessage = {text: $scope.message, user: $scope.username }
         dispatcher.trigger('add_message', sentMessage)
+        $scope.message = '';
       }
 
       console.log('Setting bind');
