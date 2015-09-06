@@ -9,7 +9,7 @@ gem 'rails', '4.2.0'
 gem 'pg'
 
 # Server
-#gem 'puma'
+gem 'puma'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
