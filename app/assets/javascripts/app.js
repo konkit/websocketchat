@@ -14,7 +14,7 @@ websocketchat.config([
 
     $stateProvider.state('app', {
       url: '/',
-      templateUrl: 'assets/home.html',
+      templateUrl: 'templates/home.html',
       controller: 'HomeController',
     })
   }

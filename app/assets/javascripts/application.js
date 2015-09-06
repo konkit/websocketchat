@@ -25,4 +25,3 @@
 //= require services/services
 
 //= require_tree .
-//= require_tree ../templates

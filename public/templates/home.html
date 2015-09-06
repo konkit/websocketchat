@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h1>Chat app</h1>
+      <div class="form-group">
+        <div class="chat-text-area form-control">
+          <p ng-repeat="chatMessage in chatData track by $index">{{chatMessage}}</p>
+        </div>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">{{username}}></span>
+        <input class="form-control" id="prompt" ng-model="message" type="text"></input>
+        <span class="input-group-btn">
+          <button class="btn btn-default" ng-click="sendMessage()" type="button">Send</button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

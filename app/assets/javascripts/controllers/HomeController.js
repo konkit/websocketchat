@@ -9,7 +9,7 @@ websocketchat.controller(
 
       $modal.open( {
         animation: true,
-        templateUrl: 'assets/username_dialog.html',
+        templateUrl: 'templates/username_dialog.html',
         controller: 'UsernameDialogController',
         size: 'md',
       })
@@ -17,7 +17,9 @@ websocketchat.controller(
         $scope.username = username;
       })
 
-      dispatcher = new WebSocketRails(window.location.hostname + ':3000/websocket');
+      var dispatcherAddress = window.location.hostname
+      dispatcherAddress += (window.location.port ? ':'+window.location.port: '') + '/websocket';
+      dispatcher = new WebSocketRails(dispatcherAddress);
 
       $scope.sendMessage = function() {
         var sentMessage = {text: $scope.message, user: $scope.username }
