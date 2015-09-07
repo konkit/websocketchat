@@ -13,6 +13,8 @@ websocketchat.controller(
         templateUrl: 'templates/username_dialog.html',
         controller: 'UsernameDialogController',
         size: 'md',
+        backdrop: 'static',
+        keyboard: false,
       }).result.then(function(username) {
         $scope.username = username;
         dispatcher.trigger('add_user', {username: username} );
