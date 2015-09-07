@@ -4,17 +4,18 @@ websocketchat.controller(
     '$scope', '$state', '$modal',
     function($scope, $state, $modal) {
       $scope.chatData = [];
+      $scope.peopleInChat = [];
 
       $scope.username = "";
 
-      $modal.open( {
+      $modal.open({
         animation: true,
         templateUrl: 'templates/username_dialog.html',
         controller: 'UsernameDialogController',
         size: 'md',
-      })
-      .result.then(function(username) {
+      }).result.then(function(username) {
         $scope.username = username;
+        dispatcher.trigger('add_user', {username: username} );
       })
 
       var dispatcherAddress = window.location.hostname
@@ -27,9 +28,13 @@ websocketchat.controller(
         $scope.message = '';
       }
 
-      console.log('Setting bind');
       dispatcher.bind('chat_listener', function(data) {
         $scope.chatData.push(data);
+        $scope.$apply();
+      });
+
+      dispatcher.bind('users_list_listener', function(data) {
+        $scope.peopleInChat = data;
         $scope.$apply();
       });
     }

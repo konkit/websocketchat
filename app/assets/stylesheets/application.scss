@@ -19,6 +19,7 @@
  *= require_self
  */
 
- .chat-text-area {
+ .min-height-250 {
    height: 250px !important;
+   border: 1px solid #ccc;
  }

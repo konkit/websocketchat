@@ -1,6 +1,7 @@
 class ChatWebsocketController < WebsocketRails::BaseController
   def initialize_session
     controller_store[:message_count] = 0
+    controller_store[:users] = []
   end
 
   def add_message
@@ -8,4 +9,16 @@ class ChatWebsocketController < WebsocketRails::BaseController
     broadcast_message :chat_listener, chat_message
   end
 
+  def add_user
+    controller_store[:users] << message[:username]
+    connection_store[:current_user] = message[:username]
+
+    puts controller_store
+
+    broadcast_message(:users_list_listener, controller_store[:users])
+  end
+
+  def delete_user
+    controller_store[:users].delete( connection_store[:current_user] )
+  end
 end

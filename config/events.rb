@@ -12,6 +12,11 @@ WebsocketRails::EventMap.describe do
   #   end
   # The above will handle an event triggered on the client like `product.new`.
 
-  subscribe :awesomeness_approval, to: ChatWebsocketController, with_method: :awesomeness_approval
   subscribe :add_message, to: ChatWebsocketController, with_method: :add_message
+  subscribe :add_user,    to: ChatWebsocketController, with_method: :add_user
+
+  # The :client_disconnected method is fired automatically when a client disconnects
+  subscribe :client_disconnected, :to => ChatWebsocketController, :with_method => :delete_user
+  # The :connection_closed method is fired automatically when a client loses connection without sending a disconnect frame.
+  subscribe :connection_closed,   :to => ChatWebsocketController, :with_method => :delete_user
 end

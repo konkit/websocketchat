@@ -2,11 +2,18 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <h1>Chat app</h1>
+
       <div class="form-group">
-        <div class="chat-text-area form-control">
-          <p ng-repeat="chatMessage in chatData track by $index">{{chatMessage}}</p>
+        <div class="row">
+          <div class="col-md-9 min-height-250">
+            <p ng-repeat="chatMessage in chatData track by $index">{{chatMessage}}</p>
+          </div>
+          <div class="col-md-3 min-height-250">
+            <p ng-repeat="person in peopleInChat track by $index">{{person}}</p>
+          </div>
         </div>
       </div>
+
       <div class="input-group">
         <span class="input-group-addon">{{username}}></span>
         <input class="form-control" id="prompt" ng-model="message" type="text"></input>
@@ -14,6 +21,7 @@
           <button class="btn btn-default" ng-click="sendMessage()" type="button">Send</button>
         </span>
       </div>
+
     </div>
   </div>
 </div>
