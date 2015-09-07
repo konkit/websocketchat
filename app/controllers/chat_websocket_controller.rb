@@ -12,13 +12,11 @@ class ChatWebsocketController < WebsocketRails::BaseController
   def add_user
     controller_store[:users] << message[:username]
     connection_store[:current_user] = message[:username]
-
-    puts controller_store
-
     broadcast_message(:users_list_listener, controller_store[:users])
   end
 
   def delete_user
     controller_store[:users].delete( connection_store[:current_user] )
+    broadcast_message(:users_list_listener, controller_store[:users])
   end
 end
