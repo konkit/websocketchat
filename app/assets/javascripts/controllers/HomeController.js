@@ -8,6 +8,8 @@ websocketchat.controller(
 
       $scope.username = "";
 
+      $('.container-fluid').addClass('distant');
+
       $modal.open({
         animation: true,
         templateUrl: 'templates/username_dialog.html',
@@ -18,6 +20,7 @@ websocketchat.controller(
       }).result.then(function(username) {
         $scope.username = username;
         dispatcher.trigger('add_user', {username: username} );
+        $('.container-fluid').removeClass('distant');
       })
 
       var dispatcherAddress = window.location.hostname + ':3001/websocket';
