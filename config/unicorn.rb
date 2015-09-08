@@ -4,6 +4,6 @@ pid "#{root}/tmp/pids/unicorn.pid"
 stderr_path "#{root}/log/unicorn.log"
 stdout_path "#{root}/log/unicorn.log"
 
-listen "/tmp/unicorn.websocketchat.sock"
+listen "#{root}/tmp/sockets/unicorn.websocketchat.sock"
 worker_processes 1
 timeout 30
