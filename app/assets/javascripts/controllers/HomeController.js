@@ -20,8 +20,7 @@ websocketchat.controller(
         dispatcher.trigger('add_user', {username: username} );
       })
 
-      var dispatcherAddress = window.location.hostname
-      dispatcherAddress += (window.location.port ? ':'+window.location.port: '') + '/websocket';
+      var dispatcherAddress = window.location.hostname + ':3001/websocket';
       dispatcher = new WebSocketRails(dispatcherAddress);
 
       $scope.sendMessage = function() {
