@@ -12,6 +12,8 @@ set :deploy_to, '/srv/www/websocketchat'
 
 set :user, 'deploy'
 
+set :rvm_ruby_version, '2.2.0'      
+
 # Default value for :scm is :git
 # set :scm, :git
 
