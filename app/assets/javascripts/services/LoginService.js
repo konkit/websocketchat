@@ -3,6 +3,10 @@ services.factory('LoginService', ['$http', function ($http) {
       grades: []
     };
 
+    o.register = function( user ) {
+      return $http.post( 'users.json', {user: user} )
+    }
+
     o.login = function( user ) {
       return $http.post( 'users/sign_in.json', { user: user } );
     }

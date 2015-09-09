@@ -36,6 +36,15 @@ websocketchat.config([
         }
       }
     })
+    .state('app.login_devise_register_user', {
+      url: '/login_devise_register/',
+      views: {
+        'authenticate': {
+          templateUrl: 'templates/login_devise_register_user.html',
+          controller: 'LoginDeviseRegisterController',
+        }
+      }
+    })
     .state('app.login_facebook', {
       url: '/login_facebook/',
       views: {

@@ -4,6 +4,8 @@ class ChatWebsocketController < WebsocketRails::BaseController
   end
 
   def add_message
+    puts current_user.inspect
+
     send_simple_message
   end
 
