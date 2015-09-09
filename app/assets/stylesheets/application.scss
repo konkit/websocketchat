@@ -19,8 +19,8 @@
  *= require_self
  */
 
- .min-height-250 {
-   height: 250px !important;
+ .min-height-450 {
+   height: 450px !important;
    border: 1px solid #ccc;
  }
 
@@ -35,7 +35,7 @@ body {
 
 .chat-window {
   transition: 1s ease-in-out;
-  transform: perspective( 500px ) translateY( -20% ) ;
+  transform: perspective( 500px ) translateY( -40% ) ;
 }
 
 .username-prompt-moved {

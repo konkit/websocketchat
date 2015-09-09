@@ -24,10 +24,12 @@
       <div class="panel-body">
         <div class="form-group">
           <div class="row">
-            <div class="col-md-9 min-height-250">
-              <p ng-repeat="chatMessage in chatData track by $index">{{chatMessage}}</p>
+            <div class="col-md-9 min-height-450">
+              <p ng-repeat="chatMessage in chatData track by $index">
+                <span ng-class="{'text-danger': chatMessage.type == 'info'}">{{chatMessage.text}}</span>
+              </p>
             </div>
-            <div class="col-md-3 min-height-250">
+            <div class="col-md-3 min-height-450">
               <p ng-repeat="person in peopleInChat track by $index">{{person}}</p>
             </div>
           </div>
