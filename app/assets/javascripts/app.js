@@ -32,7 +32,7 @@ websocketchat.config([
       views: {
         'authenticate': {
           templateUrl: 'templates/login_devise_user.html',
-          controller: 'HomeController',
+          controller: 'LoginDeviseController',
         }
       }
     })
