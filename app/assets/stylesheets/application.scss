@@ -28,10 +28,24 @@ body {
   margin-top: 50px;
 }
 
-.container-fluid {
+.username-prompt {
   transition: 1s ease-in-out;
+  transform: perspective( 500px ) translateY( 0% ) ;
 }
 
-.distant {
-  transform: perspective( 500px ) translateZ( -100px ) ;
+.chat-window {
+  transition: 1s ease-in-out;
+  transform: perspective( 500px ) translateY( -20% ) ;
+}
+
+.username-prompt-moved {
+  transition: 1s ease-in-out;
+  transform: perspective( 500px ) translateY( -200% );
+  opacity: 0;
+}
+
+.chat-window-moved {
+  transition: 1s ease-in-out;
+  transform: perspective( 500px ) translateY( 200% );
+  opacity: 0;
 }

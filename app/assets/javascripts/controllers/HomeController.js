@@ -7,21 +7,17 @@ websocketchat.controller(
       $scope.peopleInChat = [];
 
       $scope.username = "";
+      $scope.username_prompt;
 
-      $('.container-fluid').addClass('distant');
+      $('.chat-window').addClass('chat-window-moved');
 
-      $modal.open({
-        animation: true,
-        templateUrl: 'templates/username_dialog.html',
-        controller: 'UsernameDialogController',
-        size: 'md',
-        backdrop: 'static',
-        keyboard: false,
-      }).result.then(function(username) {
-        $scope.username = username;
-        dispatcher.trigger('add_user', {username: username} );
-        $('.container-fluid').removeClass('distant');
-      })
+      $scope.submit = function() {
+        $scope.username = $scope.username_prompt;
+        dispatcher.trigger('add_user', {username: $scope.username} );
+
+        $('.username-prompt').addClass('username-prompt-moved');
+        $('.chat-window').removeClass('chat-window-moved');
+      }
 
       var dispatcherAddress = window.location.hostname + ':3001/websocket';
       dispatcher = new WebSocketRails(dispatcherAddress);
