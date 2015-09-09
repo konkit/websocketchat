@@ -28,6 +28,8 @@ body {
   background-color: rgb(255, 255, 255);
   background-image: image-url('Mac1.png');
   background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .body-wrapper {
@@ -43,7 +45,6 @@ body {
 
 .username-prompt > .row {
   background-color: rgba(255, 255, 255, 0.8);
-  min-height: 300px;
 }
 
 .chat-window {

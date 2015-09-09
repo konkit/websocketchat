@@ -1,0 +1,30 @@
+<div class="container username-prompt">
+  <div class="row">
+    <div class="col-md-12">
+      <button ui-sref="app.login_temp_username" class="btn btn-default">Temporary username</button>
+      <button ui-sref="app.login_devise_user" class="btn btn-default active">Sign in with password</button>
+      <button ui-sref="app.login_facebook" class="btn btn-default">Sign in with facebook</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="modal-header">
+        <h3>Please sign in</h3>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="usernameInput">Username or email</label>
+          <input class="form-control" id="usernameInput" ng-model="devise_username"></input>
+        </div>
+        <div class="form-group">
+          <label for="passwordInput">Password</label>
+          <input class="form-control" type="password" id="passwordInput" ng-model="devise_password"></input>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-block" ng-click="submit($event)" type="button">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
