@@ -17,9 +17,9 @@
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :app, %w{deploy@54.93.126.34}
-role :web, %w{deploy@54.93.126.34}
-role :db,  %w{deploy@54.93.126.34}
+role :app, %w{deploy@52.28.100.14}
+role :web, %w{deploy@52.28.100.14}
+role :db,  %w{deploy@52.28.100.14}
 
 
 

@@ -46,7 +46,11 @@ namespace :deploy do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       within release_path do
-        execute :rake, 'websocket_rails:stop_server', 'RAILS_ENV=production'
+        begin
+          execute :rake, 'websocket_rails:stop_server', 'RAILS_ENV=production'
+        rescue SSHKit::Command::Failed => e
+          # If no PID then continue
+        end
         execute :rake, 'websocket_rails:start_server', 'RAILS_ENV=production'
       end
     end
