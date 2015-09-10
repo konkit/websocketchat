@@ -1,8 +1,11 @@
 websocketchat.controller(
   'LoginTempUsernameController',
   [
-    '$scope', '$state', '$modal', 'LoginService', 'UserDataService',
-    function($scope, $state, $modal, LoginService, UserDataService) {
+    '$scope', '$state', '$stateParams', '$modal', 'LoginService', 'UserDataService', 'ControllerFactory',
+    function($scope, $state, $stateParams, $modal, LoginService, UserDataService, ControllerFactory) {
+      ControllerFactory.decorateAlerts($scope);
+      ControllerFactory.initAnimations($scope, $state, $stateParams);
+
       $scope.user_credentials;
 
       $scope.submit = function() {

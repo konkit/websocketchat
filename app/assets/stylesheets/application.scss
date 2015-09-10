@@ -37,34 +37,30 @@ body {
   opacity: 100%;
 }
 
-.sign_out_button {
-
-}
-
-// CSS3 Effects
-.username-prompt {
-  transition: 1s ease-in-out;
-  transform: perspective( 500px ) translateY( 0% ) ;
-  min-height: 400px;
-}
-
 .username-prompt > .row {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-.chat-window {
-  transition: 1s ease-in-out;
-  //transform: perspective( 500px ) translateY( -40% ) ;
+// CSS3 Effects
+.animation-container {
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
-.username-prompt-moved {
-  transition: 1s ease-in-out;
-  transform: perspective( 500px ) translateY( -200% );
-  opacity: 0;
+.moved-up {
+  transform: perspective( 500px ) translateY( -100% );
 }
 
-.chat-window-moved {
-  transition: 1s ease-in-out;
-  transform: perspective( 500px ) translateY( 200% );
-  opacity: 0;
+.moved-left {
+  transform: perspective( 500px ) translateX( -100% );
+}
+
+.moved-right {
+  transform: perspective( 500px ) translateX( 100% );
+}
+
+.moved-down {
+  transform: perspective( 500px ) translateY( 100% );
 }

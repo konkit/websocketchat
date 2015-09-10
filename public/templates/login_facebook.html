@@ -1,8 +1,8 @@
 <div class="container username-prompt">
   <div class="row">
-    <button ui-sref="app.login_temp_username" class="btn btn-default">Temporary username</button>
-    <button ui-sref="app.login_devise_user" class="btn btn-default">Sign in with password</button>
-    <button ui-sref="app.login_facebook" class="btn btn-default active">Sign in with facebook</button>
+    <button class="btn btn-default" ng-click="moveStateRight('app.login_temp_username')">Temporary username</button>
+    <button class="btn btn-default" ng-click="moveStateRight('app.login_devise_user')">Sign in with password</button>
+    <button class="btn btn-default active">Sign in with facebook</button>
   </div>
 
   <div class="row">

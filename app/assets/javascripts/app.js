@@ -16,32 +16,37 @@ websocketchat.config([
     $stateProvider.state('app', {
       abstract: true,
       templateUrl: 'templates/home.html',
-      controller: 'HomeController',
+      controller: 'HomeController'
     })
     .state('app.login_temp_username', {
       url: '/login_temp',
       templateUrl: 'templates/login_temp_username.html',
       controller: 'LoginTempUsernameController',
+      params: {movementType: null},
     })
     .state('app.login_devise_user', {
       url: '/login_devise/',
       templateUrl: 'templates/login_devise_user.html',
       controller: 'LoginDeviseController',
+      params: {movementType: null},
     })
     .state('app.login_devise_register_user', {
       url: '/login_devise_register/',
       templateUrl: 'templates/login_devise_register_user.html',
       controller: 'LoginDeviseRegisterController',
+      params: {movementType: null},
     })
     .state('app.login_facebook', {
       url: '/login_facebook/',
       templateUrl: 'templates/login_facebook.html',
-      controller: 'HomeController',
+      controller: 'LoginFacebookController',
+      params: {movementType: null},
     })
     .state('app.chat', {
       url: '/chat/',
       templateUrl: 'templates/chat_window.html',
       controller: 'ChatController',
+      params: {movementType: null},
     })
   }
 ]);

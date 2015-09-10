@@ -1,9 +1,9 @@
 <div class="container username-prompt">
   <div class="row">
     <div class="col-md-12">
-      <button ui-sref="app.login_temp_username" class="btn btn-default">Temporary username</button>
-      <button ui-sref="app.login_devise_user" class="btn btn-default active">Sign in with password</button>
-      <button ui-sref="app.login_facebook" class="btn btn-default">Sign in with facebook</button>
+      <button class="btn btn-default" ng-click="moveStateRight('app.login_temp_username')">Temporary username</button>
+      <button class="btn btn-default active">Sign in with password</button>
+      <button class="btn btn-default" ng-click="moveStateLeft('app.login_facebook')">Sign in with facebook</button>
     </div>
   </div>
 
@@ -14,7 +14,7 @@
         <a ui-sref="app.login_devise_register_user">(don't have account yet?)</a>
       </div>
       <div class="modal-body">
-        <alert close="closeAlert($index)" ng-repeat="alert in alerts" type="{{alert.type}}">{{alert.msg}}</alert> 
+        <alert close="closeAlert($index)" ng-repeat="alert in alerts" type="{{alert.type}}">{{alert.msg}}</alert>
 
         <div class="form-group">
           <label for="usernameInput">Email</label>
