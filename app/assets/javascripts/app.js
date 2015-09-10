@@ -20,39 +20,28 @@ websocketchat.config([
     })
     .state('app.login_temp_username', {
       url: '/login_temp',
-      views: {
-        'authenticate': {
-          templateUrl: 'templates/login_temp_username.html',
-          controller: 'HomeController',
-        }
-      }
+      templateUrl: 'templates/login_temp_username.html',
+      controller: 'LoginTempUsernameController',
     })
     .state('app.login_devise_user', {
       url: '/login_devise/',
-      views: {
-        'authenticate': {
-          templateUrl: 'templates/login_devise_user.html',
-          controller: 'LoginDeviseController',
-        }
-      }
+      templateUrl: 'templates/login_devise_user.html',
+      controller: 'LoginDeviseController',
     })
     .state('app.login_devise_register_user', {
       url: '/login_devise_register/',
-      views: {
-        'authenticate': {
-          templateUrl: 'templates/login_devise_register_user.html',
-          controller: 'LoginDeviseRegisterController',
-        }
-      }
+      templateUrl: 'templates/login_devise_register_user.html',
+      controller: 'LoginDeviseRegisterController',
     })
     .state('app.login_facebook', {
       url: '/login_facebook/',
-      views: {
-        'authenticate': {
-          templateUrl: 'templates/login_facebook.html',
-          controller: 'HomeController',
-        }
-      }
+      templateUrl: 'templates/login_facebook.html',
+      controller: 'HomeController',
+    })
+    .state('app.chat', {
+      url: '/chat/',
+      templateUrl: 'templates/chat_window.html',
+      controller: 'ChatController',
     })
   }
 ]);

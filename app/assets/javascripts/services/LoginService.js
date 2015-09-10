@@ -12,7 +12,7 @@ services.factory('LoginService', ['$http', function ($http) {
     }
 
     o.getCurrentUser = function() {
-      return $http.get( 'welcome/get_current_user', {} )
+      return $http.get( 'home/get_current_user.json', {} )
     }
 
     o.logout = function() {

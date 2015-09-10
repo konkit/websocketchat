@@ -14,6 +14,8 @@
         <a ui-sref="app.login_devise_register_user">(don't have account yet?)</a>
       </div>
       <div class="modal-body">
+        <alert close="closeAlert($index)" ng-repeat="alert in alerts" type="{{alert.type}}">{{alert.msg}}</alert> 
+
         <div class="form-group">
           <label for="usernameInput">Email</label>
           <input class="form-control" id="usernameInput" ng-model="user_credentials.email"></input>

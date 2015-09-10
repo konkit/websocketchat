@@ -1,56 +1,45 @@
 websocketchat.controller(
   'LoginDeviseController',
   [
-    '$scope', '$state', '$modal', 'LoginService',
-    function($scope, $state, $modal, LoginService) {
-      $scope.chatData = [];
-      $scope.peopleInChat = [];
+    '$scope', '$state', '$modal', 'LoginService', 'UserDataService', 'ControllerFactory',
+    function($scope, $state, $modal, LoginService, UserDataService, ControllerFactory) {
+      ControllerFactory.decorateAlerts($scope);
 
-      $scope.username = "";
-      $scope.user_credentials;
-
-      $('.chat-window').addClass('chat-window-moved');
+      $scope.user_credentials = {};
 
       var dispatcherAddress = window.location.hostname + ':3001/websocket';
       dispatcher = new WebSocketRails(dispatcherAddress);
 
-      function initChat() {
-        $scope.username = $scope.username_prompt;
-        dispatcher.trigger('add_user', {username: $scope.username} );
+      //Check if user is not logged in already
+      LoginService.getCurrentUser()
+        .success(function(response) {
+          console.log(response);
 
-        $('.username-prompt').addClass('username-prompt-moved');
-        $('.chat-window').removeClass('chat-window-moved');
-      }
+          if( response.id != null ) {
+            UserDataService.setUser(response.username, 'devise');
+            $state.go('app.chat')
+          }
+        })
 
       $scope.submit = function() {
         LoginService.login($scope.user_credentials)
           .success(function(response) {
-            console.log(response);
-            initChat();
+            if( typeof(response.error) != "undefined" ) {
+              console.log('Error : ' + response.error);
+            } else {
+              UserDataService.setUser(response.username, 'devise');
+              //window.location.reload();
+              $state.go('app.chat')
+            }
           })
           .error(function(response) {
-            //$scope.alerts = [];
-            //$scope.addAlert(response.error, 'danger');
+            if( typeof(response.error) != "undefined" ) {
+              $scope.alerts = [];
+              //!!! Here we take response.error ( not errorS )
+              $scope.addAlert(response.error, 'danger');
+            }
           });
       }
-
-
-
-      $scope.sendMessage = function() {
-        var sentMessage = {text: $scope.message, user: $scope.username }
-        dispatcher.trigger('add_message', sentMessage)
-        $scope.message = '';
-      }
-
-      dispatcher.bind('chat_listener', function(data) {
-        $scope.chatData.push(data);
-        $scope.$apply();
-      });
-
-      dispatcher.bind('users_list_listener', function(data) {
-        $scope.peopleInChat = data;
-        $scope.$apply();
-      });
     }
   ]
 );
