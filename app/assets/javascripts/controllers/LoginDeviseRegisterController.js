@@ -21,7 +21,7 @@ websocketchat.controller(
               });
             } else {
               UserDataService.setUser(response.username, 'devise');
-              $state.go('app.chat')
+              $scope.moveStateDown('app.chat')
             }
           })
           .error(function(response) {

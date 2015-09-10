@@ -18,7 +18,7 @@ websocketchat.controller(
 
           if( response.id != null ) {
             UserDataService.setUser(response.username, 'devise');
-            $state.go('app.chat')
+            $scope.moveStateDown('app.chat')
           }
         })
 
@@ -30,7 +30,7 @@ websocketchat.controller(
               $scope.addAlert(response.error, 'danger');
             } else {
               UserDataService.setUser(response.username, 'devise');
-              $state.go('app.chat')
+              $scope.moveStateDown('app.chat')
             }
           })
           .error(function(response) {

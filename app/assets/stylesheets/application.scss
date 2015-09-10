@@ -43,14 +43,14 @@ body {
 
 // CSS3 Effects
 .animation-container {
-  -webkit-transition: 0.5s ease-in-out;
-  -moz-transition: 0.5s ease-in-out;
-  -o-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
+  -webkit-transition: 0.8s ease-in-out;
+  -moz-transition: 0.8s ease-in-out;
+  -o-transition: 0.8s ease-in-out;
+  transition: 0.8s ease-in-out;
 }
 
 .moved-up {
-  transform: perspective( 500px ) translateY( -100% );
+  transform: perspective( 500px ) translateY( -300% );
 }
 
 .moved-left {
@@ -62,5 +62,5 @@ body {
 }
 
 .moved-down {
-  transform: perspective( 500px ) translateY( 100% );
+  transform: perspective( 500px ) translateY( 300% );
 }

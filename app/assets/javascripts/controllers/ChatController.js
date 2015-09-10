@@ -1,9 +1,10 @@
 websocketchat.controller(
   'ChatController',
   [
-    '$scope', '$state', '$modal', 'LoginService', 'UserDataService', 'ControllerFactory',
-    function($scope, $state, $modal, LoginService, UserDataService, ControllerFactory) {
+    '$scope', '$state', '$stateParams', '$modal', 'LoginService', 'UserDataService', 'ControllerFactory',
+    function($scope, $state, $stateParams, $modal, LoginService, UserDataService, ControllerFactory) {
       ControllerFactory.decorateAlerts($scope);
+      ControllerFactory.initAnimations($scope, $state, $stateParams);
 
       $scope.chatData = [];
       $scope.peopleInChat = [];
@@ -50,11 +51,11 @@ websocketchat.controller(
 
       function exitFromChatState() {
         if( UserDataService.user.authtype == 'devise') {
-          $state.go('app.login_devise_user');
+          $scope.moveStateDown('app.login_devise_user');
         } else if( UserDataService.user.authtype == 'temp' ) {
-          $state.go('app.login_temp_username');
+          $scope.moveStateDown('app.login_temp_username');
         } else {
-          $state.go('app.login_temp_username');
+          $scope.moveStateDown('app.login_temp_username');
         }
       }
     }

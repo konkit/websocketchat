@@ -22,6 +22,10 @@ services.factory('ControllerFactory', [function() {
         initialClass = 'moved-right'
       } else if( $stateParams.movementType == 'right') {
         initialClass = 'moved-left'
+      } else if( $stateParams.movementType == 'up') {
+        initialClass = 'moved-down'
+      } else if( $stateParams.movementType == 'down') {
+        initialClass = 'moved-up'
       } else {
         initialClass = 'moved-left'
       }
@@ -54,6 +58,28 @@ services.factory('ControllerFactory', [function() {
             $state.go(targetState, {movementType: 'right'}, {reload: true})
           })
           .addClass('moved-right')
+      }
+
+      $scope.moveStateUp = function(targetState) {
+        console.log('Started movement up');
+
+        $('.animation-container')
+          .bind('otransitionend transitionend webkitTransitionEnd', function() {
+            console.log('Animation finished, changing state, target: ' + targetState);
+            $state.go(targetState, {movementType: 'up'}, {reload: true})
+          })
+          .addClass('moved-up')
+      }
+
+      $scope.moveStateDown = function(targetState) {
+        console.log('Started movement down');
+
+        $('.animation-container')
+          .bind('otransitionend transitionend webkitTransitionEnd', function() {
+            console.log('Animation finished, changing state, target: ' + targetState);
+            $state.go(targetState, {movementType: 'down'}, {reload: true})
+          })
+          .addClass('moved-down')
       }
     }
 
