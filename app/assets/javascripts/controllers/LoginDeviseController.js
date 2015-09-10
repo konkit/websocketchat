@@ -25,10 +25,10 @@ websocketchat.controller(
         LoginService.login($scope.user_credentials)
           .success(function(response) {
             if( typeof(response.error) != "undefined" ) {
-              console.log('Error : ' + response.error);
+              $scope.alerts = [];
+              $scope.addAlert(response.error, 'danger');
             } else {
               UserDataService.setUser(response.username, 'devise');
-              //window.location.reload();
               $state.go('app.chat')
             }
           })

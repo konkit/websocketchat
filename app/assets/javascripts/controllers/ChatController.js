@@ -1,33 +1,31 @@
 websocketchat.controller(
   'ChatController',
   [
-    '$scope', '$state', '$modal', 'LoginService', 'UserDataService',
-    function($scope, $state, $modal, LoginService, UserDataService) {
+    '$scope', '$state', '$modal', 'LoginService', 'UserDataService', 'ControllerFactory',
+    function($scope, $state, $modal, LoginService, UserDataService, ControllerFactory) {
+      ControllerFactory.decorateAlerts($scope);
+
       $scope.chatData = [];
       $scope.peopleInChat = [];
 
-      $scope.user = UserDataService.user;
+      // If user not set, get back to user select
       if( UserDataService.isSet() == false ) {
-        $state.go('app.login_temp_username')
+        exitFromChatState();
       }
 
+      // Websocket connect
       var dispatcherAddress = window.location.hostname + ':3001/websocket';
       dispatcher = new WebSocketRails(dispatcherAddress);
       dispatcher.trigger('add_user', {username: UserDataService.user.username} );
+
 
       $scope.logout = function() {
         dispatcher._conn.close();
 
         LoginService.logout()
           .success(function(response) {
-            console.log(response);
             UserDataService.logout();
-
-            if( UserDataService.user.authtype == 'devise') {
-              $state.go('app.login_devise_user');
-            } else if( UserDataService.user.authtype == 'temp' ) {
-              $state.go('app.login_temp_username');
-            }
+            exitFromChatState();
           })
           .error(function(response) {
             console.log(response);
@@ -35,7 +33,7 @@ websocketchat.controller(
       }
 
       $scope.sendMessage = function() {
-        var sentMessage = {text: $scope.message, user: $scope.user.username }
+        var sentMessage = {text: $scope.message, user: UserDataService.user.username }
         UserDataService.dispatcher.trigger('add_message', sentMessage)
         $scope.message = '';
       }
@@ -49,6 +47,16 @@ websocketchat.controller(
         $scope.peopleInChat = data;
         $scope.$apply();
       });
+
+      function exitFromChatState() {
+        if( UserDataService.user.authtype == 'devise') {
+          $state.go('app.login_devise_user');
+        } else if( UserDataService.user.authtype == 'temp' ) {
+          $state.go('app.login_temp_username');
+        } else {
+          $state.go('app.login_temp_username');
+        }
+      }
     }
   ]
 );
