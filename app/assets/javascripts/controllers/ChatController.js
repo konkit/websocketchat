@@ -9,6 +9,8 @@ websocketchat.controller(
       $scope.chatData = [];
       $scope.peopleInChat = [];
 
+      $scope.username = UserDataService.user.username
+
       // If user not set, get back to user select
       if( UserDataService.isSet() == false ) {
         exitFromChatState();
@@ -35,7 +37,7 @@ websocketchat.controller(
 
       $scope.sendMessage = function() {
         var sentMessage = {text: $scope.message, user: UserDataService.user.username }
-        UserDataService.dispatcher.trigger('add_message', sentMessage)
+        dispatcher.trigger('add_message', sentMessage)
         $scope.message = '';
       }
 

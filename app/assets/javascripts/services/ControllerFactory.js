@@ -36,7 +36,7 @@ services.factory('ControllerFactory', [function() {
       setTimeout(
         function() {
           $('.animation-container').removeClass(initialClass);
-        }, 300);
+        }, 200);
 
       $scope.moveStateLeft = function(targetState) {
         console.log('Started movement left');
