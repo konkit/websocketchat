@@ -23,8 +23,12 @@ services.factory('LoginService', ['$http', function ($http) {
       return $http.put( 'users.json/', { user: user_data })
     }
 
-    o.loginWithFacebook = function() {
-      return $http.get( 'users/auth/facebook' );
+    o.loginWithFacebook = function(data) {
+      return $.getJSON('users/auth/facebook/callback')
+    }
+
+    o.logoutWithFacebook= function(data) {
+      return $.getJSON('/auth/facebook/signout')
     }
 
     return o;

@@ -25,14 +25,29 @@ websocketchat.controller(
       $scope.logout = function() {
         dispatcher._conn.close();
 
-        LoginService.logout()
-          .success(function(response) {
-            UserDataService.logout();
-            exitFromChatState();
-          })
-          .error(function(response) {
-            console.log(response);
-          });
+        if( UserDataService.user.type== 'devise') {
+          LoginService.logout()
+            .success(function(response) {
+              UserDataService.logout();
+              exitFromChatState();
+            })
+            .error(function(response) {
+              console.log(response);
+            });
+        } else if( UserDataService.user.type == 'facebook') {
+          LoginService.logoutWithFacebook()
+            .success(function(response) {
+              UserDataService.logout();
+              exitFromChatState();
+            })
+            .error(function(response) {
+              console.log(response);
+            });
+        } else {
+          UserDataService.logout();
+          exitFromChatState();
+        }
+
       }
 
       $scope.sendMessage = function() {

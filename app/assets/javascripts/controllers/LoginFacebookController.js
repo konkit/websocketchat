@@ -28,21 +28,22 @@ websocketchat.controller(
           if (response.authResponse) {
             $scope.fbLoginStatus = 'Connected with Facebook, signing in ...';
             $scope.$apply();
-
             // since we have cookies enabled, this request will allow omniauth to parse
             // out the auth code from the signed request in the fbsr_XXX cookie
-            $.getJSON('users/auth/facebook/callback', function(json) {
-              UserDataService.setUser(json.username, 'facebook');
-              $scope.moveStateDown('app.chat')
-            });
+            LoginService.loginWithFacebook()
+              .success(function(json) {
+                UserDataService.setUser(json.username, 'facebook');
+                $scope.moveStateDown('app.chat')
+              });
           }
         }, { scope: 'email' }); // These are the permissions you are requesting
       };
 
       $scope.signOut = function() {
-        $.getJSON('/auth/facebook/signout', function(json) {
-          $('#results').html(JSON.stringify(json));
-        });
+        LoginService.logoutWithFacebook()
+          .success(function(json) {
+            $('#results').html(JSON.stringify(json));
+          });
       };
 
     }
