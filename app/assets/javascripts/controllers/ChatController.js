@@ -53,11 +53,11 @@ websocketchat.controller(
 
       function exitFromChatState() {
         if( UserDataService.user.authtype == 'devise') {
-          $scope.moveStateDown('app.login_devise_user');
+          $scope.moveStateUp('app.login_devise_user');
         } else if( UserDataService.user.authtype == 'temp' ) {
-          $scope.moveStateDown('app.login_temp_username');
+          $scope.moveStateUp('app.login_temp_username');
         } else {
-          $scope.moveStateDown('app.login_temp_username');
+          $scope.moveStateUp('app.login_temp_username');
         }
       }
     }

@@ -50,7 +50,7 @@ body {
 }
 
 .moved-up {
-  transform: perspective( 500px ) translateY( -300% );
+  transform: perspective( 500px ) translateY( 300% );
 }
 
 .moved-left {
@@ -62,5 +62,5 @@ body {
 }
 
 .moved-down {
-  transform: perspective( 500px ) translateY( 300% );
+  transform: perspective( 500px ) translateY( -300% );
 }
