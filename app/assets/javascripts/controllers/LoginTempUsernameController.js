@@ -10,7 +10,7 @@ websocketchat.controller(
 
       $scope.submit = function() {
         UserDataService.setUser($scope.username_prompt, 'temp');
-        $scope.moveStateUp('app.chat')
+        $scope.moveStateDown('app.chat')
       }
 
       $scope.logout = function() {
