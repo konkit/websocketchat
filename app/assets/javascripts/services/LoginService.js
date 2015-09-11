@@ -23,5 +23,9 @@ services.factory('LoginService', ['$http', function ($http) {
       return $http.put( 'users.json/', { user: user_data })
     }
 
+    o.loginWithFacebook = function() {
+      return $http.get( 'users/auth/facebook' );
+    }
+
     return o;
 }]);

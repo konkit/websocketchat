@@ -1,0 +1,9 @@
+development:
+  appid: 461016947402661
+  appsecret: d100b5865316d380bf37cd44bc9a918c
+test:
+  appid: 461016947402661
+  appsecret: d100b5865316d380bf37cd44bc9a918c
+production:
+  appid: 461010984069924
+  appsecret: ae0f502195fae471d7bb51a632334043

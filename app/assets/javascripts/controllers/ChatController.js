@@ -56,6 +56,8 @@ websocketchat.controller(
           $scope.moveStateUp('app.login_devise_user');
         } else if( UserDataService.user.authtype == 'temp' ) {
           $scope.moveStateUp('app.login_temp_username');
+        } else if( UserDataService.user.authtype == 'facebook' ) {
+          $scope.moveStateUp('app.login_facebook');
         } else {
           $scope.moveStateUp('app.login_temp_username');
         }

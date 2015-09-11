@@ -8,7 +8,17 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <div class="modal-header"><h3>Please wait ...</h3></div>
-      <div class="modal-body"></div>
+      <div class="modal-body">
+          <div id="fb-root"></div> <!-- Needed for facebook to function properly. See facebook sdk for more info. -->
+
+          <div>{{fbLoginStatus}}</div>
+
+          <p id="connect">
+            <a ng-click="signIn()" href="#">Signin</a>
+            <a ng-click="signOut()" href="#">Signout</a>
+          </p>
+
+      </div>
       <div class="modal-footer"></div>
     </div>
   </div>
