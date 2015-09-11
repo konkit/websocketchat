@@ -27,9 +27,5 @@ services.factory('LoginService', ['$http', function ($http) {
       return $.getJSON('users/auth/facebook/callback')
     }
 
-    o.logoutWithFacebook= function(data) {
-      return $.getJSON('/auth/facebook/signout')
-    }
-
     return o;
 }]);

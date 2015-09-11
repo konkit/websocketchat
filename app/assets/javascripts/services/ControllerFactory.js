@@ -27,7 +27,7 @@ services.factory('ControllerFactory', [function() {
       } else if( $stateParams.movementType == 'down') {
         initialClass = 'moved-up'
       } else {
-        initialClass = 'moved-left'
+        initialClass = 'moved-down'
       }
 
       console.log("Init class = " + initialClass);

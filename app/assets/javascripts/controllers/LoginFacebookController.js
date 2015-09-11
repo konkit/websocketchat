@@ -23,29 +23,30 @@ websocketchat.controller(
         d.getElementsByTagName('head')[0].appendChild(js);
       }(document));
 
-      $scope.signIn = function() {
-        FB.login(function(response) {
-          if (response.authResponse) {
-            $scope.fbLoginStatus = 'Connected with Facebook, signing in ...';
-            $scope.$apply();
-            // since we have cookies enabled, this request will allow omniauth to parse
-            // out the auth code from the signed request in the fbsr_XXX cookie
-            LoginService.loginWithFacebook()
-              .success(function(json) {
-                UserDataService.setUser(json.username, 'facebook');
-                $scope.moveStateDown('app.chat')
-              });
-          }
-        }, { scope: 'email' }); // These are the permissions you are requesting
-      };
-
-      $scope.signOut = function() {
-        LoginService.logoutWithFacebook()
+      function handleFacebookLogin() {
+        $scope.fbLoginStatus = 'Connected with Facebook, signing in ...';
+        // since we have cookies enabled, this request will allow omniauth to parse
+        // out the auth code from the signed request in the fbsr_XXX cookie
+        LoginService.loginWithFacebook()
           .success(function(json) {
-            $('#results').html(JSON.stringify(json));
+            UserDataService.setUser(json.username, 'facebook');
+            $scope.moveStateDown('app.chat')
           });
-      };
+      }
 
+      $scope.signIn = function() {
+        FB.getLoginStatus(function(response) {
+          if (response.status === 'connected') {
+            handleFacebookLogin();
+          } else {
+            FB.login(function(response) {
+              if (response.authResponse) {
+                handleFacebookLogin();
+              }
+            }, { scope: 'email' }); // These are the permissions you are requesting
+          }
+        });
+      };
     }
   ]
 );
