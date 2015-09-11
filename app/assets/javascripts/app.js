@@ -30,12 +30,6 @@ websocketchat.config([
       controller: 'LoginDeviseController',
       params: {movementType: null},
     })
-    .state('app.login_devise_register_user', {
-      url: '/login_devise_register/',
-      templateUrl: 'templates/login_devise_register_user.html',
-      controller: 'LoginDeviseRegisterController',
-      params: {movementType: null},
-    })
     .state('app.login_facebook', {
       url: '/login_facebook/',
       templateUrl: 'templates/login_facebook.html',
