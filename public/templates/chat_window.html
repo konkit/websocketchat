@@ -21,7 +21,7 @@
         </div>
 
         <div class="input-group">
-          <span class="input-group-addon">{{username}}></span>
+          <span class="input-group-addon">&lt;{{username}}&gt;</span>
           <input class="form-control" id="prompt" ng-model="message" type="text" ng-keyup="$event.keyCode == 13 ? sendMessage() : null" ...></input>
           <span class="input-group-btn">
             <button class="btn btn-default" ng-click="sendMessage()" type="button">Send</button>

@@ -31,7 +31,11 @@ websocketchat.controller(
           });
       }
 
-      $scope.signIn = function() {
+      $scope.signIn = function($event) {
+        spanElement = document.createElement("span");
+        spanElement.className = "glyphicon glyphicon-refresh glyphicon-refresh-animate";
+        $event.target.appendChild(spanElement);
+
         Facebook.login(function(response) {
           if (response.authResponse) {
             handleFacebookLogin(response);

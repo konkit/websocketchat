@@ -26,7 +26,7 @@ class ChatWebsocketController < WebsocketRails::BaseController
   def send_simple_message
     chat_message = {
       type: :message,
-      text: "[#{Time.now.strftime('%H:%M:%S')}] #{message[:user]} > #{message[:text]}"
+      text: "[#{Time.now.strftime('%H:%M:%S')}] <#{message[:user]}> #{message[:text]}"
     }
     broadcast_message :chat_listener, chat_message
   end
