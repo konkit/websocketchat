@@ -21,7 +21,6 @@ websocketchat.controller(
       dispatcher = new WebSocketRails(dispatcherAddress);
       dispatcher.trigger('add_user', {username: UserDataService.user.username} );
 
-
       $scope.logout = function() {
         dispatcher._conn.close();
         LoginService.logout()
@@ -38,11 +37,15 @@ websocketchat.controller(
         var sentMessage = {text: $scope.message, user: UserDataService.user.username }
         dispatcher.trigger('add_message', sentMessage)
         $scope.message = '';
+        $('#prompt').focus();
       }
 
       dispatcher.bind('chat_listener', function(data) {
         $scope.chatData.push(data);
         $scope.$apply();
+
+        var mydiv = $('#js-chat-window');
+        mydiv.scrollTop(mydiv.prop('scrollHeight'));
       });
 
       dispatcher.bind('users_list_listener', function(data) {

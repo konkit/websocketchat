@@ -41,6 +41,10 @@ body {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
+.overflow-scroll {
+  overflow-y: auto;
+}
+
 // CSS3 Effects
 .animation-container {
   -webkit-transition: 0.8s ease-in-out;
