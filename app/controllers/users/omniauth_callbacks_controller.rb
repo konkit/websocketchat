@@ -11,11 +11,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
       sign_in @user, :event => :authentication #this will throw if @user is not activated
-      set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
-      respond_with @user
+      render json: @user
     else
       session["devise.facebook_data"] = request.env["omniauth.auth"]
-      respond_with @user.errors
+      render json: @user.errors
     end
   end
 
@@ -28,9 +27,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # end
 
   # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
+  def failure
+    render json: {errors: failure_message}, status: :bad_request
+  end
 
   # protected
 

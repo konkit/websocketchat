@@ -1,51 +1,42 @@
+websocketchat.config(['FacebookProvider', function(FacebookProvider) {
+  var api_key = $('[name=fb_api_key]').val();
+  console.log('api_key');
+  FacebookProvider.init( api_key );
+}]);
+
 websocketchat.controller(
   'LoginFacebookController',
   [
-    '$scope', '$state', '$stateParams', '$modal', 'LoginService', 'UserDataService', 'ControllerFactory',
-    function($scope, $state, $stateParams, $modal, LoginService, UserDataService, ControllerFactory) {
+    '$scope', '$state', '$stateParams', '$modal', 'LoginService', 'UserDataService', 'ControllerFactory', 'Facebook',
+    function($scope, $state, $stateParams, $modal, LoginService, UserDataService, ControllerFactory, Facebook) {
       ControllerFactory.decorateAlerts($scope);
       ControllerFactory.initAnimations($scope, $state, $stateParams);
 
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId  : $('[name=fb_api_key]').val(),
-          status : true, // check login status
-          version: 'v2.0',
-          cookie : true, // enable cookies to allow the server to access the session
-          xfbml  : true  // parse XFBML
-        });
-      };
-
-      (function(d) {
-        var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-        js = d.createElement('script'); js.id = id; js.async = true;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        d.getElementsByTagName('head')[0].appendChild(js);
-      }(document));
-
-      function handleFacebookLogin() {
+      function handleFacebookLogin(response) {
         $scope.fbLoginStatus = 'Connected with Facebook, signing in ...';
         // since we have cookies enabled, this request will allow omniauth to parse
         // out the auth code from the signed request in the fbsr_XXX cookie
-        LoginService.loginWithFacebook()
+
+        LoginService.loginWithFacebook(response)
           .success(function(json) {
             UserDataService.setUser(json.username, 'facebook');
             $scope.moveStateDown('app.chat')
+          })
+          .error(function(json) {
+            console.log(json);
+
+            $scope.alerts = [];
+            $scope.addAlert(json.responseJSON.errors, 'danger');
+            $scope.$apply();
           });
       }
 
       $scope.signIn = function() {
-        FB.getLoginStatus(function(response) {
-          if (response.status === 'connected') {
-            handleFacebookLogin();
-          } else {
-            FB.login(function(response) {
-              if (response.authResponse) {
-                handleFacebookLogin();
-              }
-            }, { scope: 'email' }); // These are the permissions you are requesting
+        Facebook.login(function(response) {
+          if (response.authResponse) {
+            handleFacebookLogin(response);
           }
-        });
+        }, { scope: 'email' }); // These are the permissions you are requesting
       };
     }
   ]

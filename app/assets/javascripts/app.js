@@ -4,6 +4,7 @@ websocketchat = angular.module('websocketchat',[
   'websocketchat.controllers',
   'websocketchat.services',
   'ui.bootstrap',
+  'facebook',
 ]);
 
 websocketchat.config([

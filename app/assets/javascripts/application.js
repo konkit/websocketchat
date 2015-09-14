@@ -18,6 +18,7 @@
 //= require angular-ui-router
 //= require angular-bootstrap
 //= require angular-rails-templates
+//= require angular-facebook
 
 //= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets
 

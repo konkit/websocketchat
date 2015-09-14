@@ -24,7 +24,7 @@ services.factory('LoginService', ['$http', function ($http) {
     }
 
     o.loginWithFacebook = function(data) {
-      return $.getJSON('users/auth/facebook/callback')
+      return $.post('users/auth/facebook/callback', data, "json")
     }
 
     return o;
