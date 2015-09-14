@@ -19,12 +19,10 @@ websocketchat.controller(
 
         LoginService.loginWithFacebook(response)
           .success(function(json) {
-            UserDataService.setUser(json.username, 'facebook');
+            UserDataService.setUser(json.username, 'facebook', json.image);
             $scope.moveStateDown('app.chat')
           })
           .error(function(json) {
-            console.log(json);
-
             $scope.alerts = [];
             $scope.addAlert(json.responseJSON.errors, 'danger');
             $scope.$apply();

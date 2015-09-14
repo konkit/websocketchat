@@ -19,7 +19,7 @@ websocketchat.controller(
       // Websocket connect
       var dispatcherAddress = window.location.hostname + ':3001/websocket';
       dispatcher = new WebSocketRails(dispatcherAddress);
-      dispatcher.trigger('add_user', {username: UserDataService.user.username} );
+      dispatcher.trigger('add_user', {user: UserDataService.user} );
 
       $scope.logout = function() {
         dispatcher._conn.close();

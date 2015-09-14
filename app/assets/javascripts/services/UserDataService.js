@@ -7,10 +7,11 @@ services.factory('UserDataService', [function () {
       },
     };
 
-    service.setUser = function(username, type) {
+    service.setUser = function(username, type, image_url) {
       this.user.username = username;
       this.user.ready = true;
       this.user.authtype = type;
+      this.user.image_url = image_url;
     }
 
     service.isSet = function() {

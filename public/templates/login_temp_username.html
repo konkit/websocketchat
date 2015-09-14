@@ -1,8 +1,10 @@
 <div class="container username-prompt">
   <div class="row">
-    <button class="btn btn-default active">Temporary username</button>
-    <button class="btn btn-default" ng-click="moveStateLeft('app.login_devise_user')">Sign in with password</button>
-    <button class="btn btn-default" ng-click="moveStateLeft('app.login_facebook')">Sign in with facebook</button>
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="">Temporary username</a></li>
+      <li role="presentation" ng-click="moveStateLeft('app.login_devise_user')"><a href="">Sign in with password</a></li>
+      <li role="presentation" ng-click="moveStateLeft('app.login_facebook')"><a href="">Sign in with facebook</a></li>
+    </ul>
   </div>
 
   <div class="row">
