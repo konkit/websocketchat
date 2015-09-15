@@ -8,6 +8,10 @@ class ChatWebsocketController < WebsocketRails::BaseController
   end
 
   def add_user
+    if message[:user][:username].blank?
+      return
+    end
+
     controller_store[:users] << message[:user]
     connection_store[:current_user] = message[:user]
     broadcast_message(:users_list_listener, controller_store[:users])
@@ -16,6 +20,10 @@ class ChatWebsocketController < WebsocketRails::BaseController
 
   def delete_user
     controller_store[:users].delete( connection_store[:current_user] )
+
+    puts 'controller_store[:users]'
+    puts controller_store[:users]
+
     broadcast_message(:users_list_listener, controller_store[:users])
     send_user_left_message
   end
@@ -32,7 +40,7 @@ class ChatWebsocketController < WebsocketRails::BaseController
   def send_user_joined_message
     sent_message = {
       type: :info,
-      text: "[#{Time.now.strftime('%H:%M:%S')}] User #{connection_store[:current_user].username} joined"
+      text: "[#{Time.now.strftime('%H:%M:%S')}] User #{connection_store[:current_user][:username]} joined"
     }
     broadcast_message(:chat_listener, sent_message)
   end
@@ -40,7 +48,7 @@ class ChatWebsocketController < WebsocketRails::BaseController
   def send_user_left_message
     sent_message = {
       type: :info,
-      text: "[#{Time.now.strftime('%H:%M:%S')}] User #{connection_store[:current_user].username} left"
+      text: "[#{Time.now.strftime('%H:%M:%S')}] User #{connection_store[:current_user][:username]} left"
     }
     broadcast_message(:chat_listener, sent_message)
   end

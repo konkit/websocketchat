@@ -16,7 +16,7 @@
             </div>
             <div class="col-md-3 min-height-450 overflow-scroll">
               <p ng-repeat="person in peopleInChat track by $index">
-                <img class="profile-picture" data-ng-src={{person.image_url}} />
+                <img class="profile-picture" data-ng-src="{{person.image_url || 'placeholder.png'}}" />
                 {{person.username}}
               </p>
             </div>
