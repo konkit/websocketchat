@@ -1,6 +1,6 @@
 == Websocket Chat
 
-Simple chat application, but using powerful and bleeding edge technologies:
+Simple chat application, but using powerful, cutting edge technologies:
 
 * Realtime and asynchronous (due to websocket usage).
 
