@@ -61,8 +61,10 @@ group :development, :test do
   gem 'json_spec', git: 'https://github.com/rusterholz/json_spec.git'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'capybara-screenshot', :group => :test
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
