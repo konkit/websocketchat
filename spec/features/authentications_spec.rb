@@ -17,6 +17,8 @@ RSpec.feature "Authentications", type: :feature do
 
   scenario "Auth with credentials", js: true do
     visit root_path
+
+    # User signup
     expect {
       click_link 'Sign in with password'
       click_link '(don\'t have account yet?)'
@@ -33,5 +35,16 @@ RSpec.feature "Authentications", type: :feature do
     # logout
     page.find('.glyphicon.glyphicon-remove').click
     Capybara.using_wait_time(20) { expect(page).to have_content('Please sign in') }
+
+    # User sign in
+    find('#usernameInput').set 'konkit@example.com'
+    find('#passwordInput').set '321321321'
+    click_button 'Submit'
+
+    Capybara.using_wait_time(20) { expect(page).to have_content('User TestCredentialsUser joined') }
+
+    # logout
+    page.find('.glyphicon.glyphicon-remove').click
+    Capybara.using_wait_time(20) { expect(page).to have_content('Please sign in') }  
   end
 end
