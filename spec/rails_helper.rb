@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara'
 require 'capybara-screenshot/rspec'
+require 'devise'
 
 Capybara.server_host = "localhost"
 Capybara.server_port = "3000"
@@ -41,23 +42,19 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
+  # Database cleaner
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
   end
-
-  # config.before(:each) do
-  #   DatabaseCleaner.start
-  # end
-  #
-  # config.after(:each) do
-  #   DatabaseCleaner.clean
-  # end
 
   config.around(:each) do |example|
     DatabaseCleaner.start
     example.run
     DatabaseCleaner.clean
   end
+
+  # Devise
+  config.include Devise::TestHelpers, :type => :controller
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
