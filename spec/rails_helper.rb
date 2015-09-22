@@ -8,6 +8,9 @@ require 'rspec/rails'
 require 'capybara'
 require 'capybara-screenshot/rspec'
 
+Capybara.server_host = "localhost"
+Capybara.server_port = "3000"
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
