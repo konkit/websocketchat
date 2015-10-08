@@ -1,5 +1,7 @@
 == Websocket Chat
 
+{<img src="https://codeclimate.com/github/konkit/websocketchat/badges/gpa.svg" />}[https://codeclimate.com/github/konkit/websocketchat]
+
 Simple chat application, but using powerful, cutting edge technologies:
 
 * Realtime and asynchronous (due to websocket usage).
